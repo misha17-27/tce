@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-label="Şəkil hazırlanır">
+  <rect width="800" height="600" fill="#F3F5F6"/>
+  <g stroke="#D7DEE2" stroke-width="1">
+    <path d="M0 100h800M0 200h800M0 300h800M0 400h800M0 500h800"/>
+    <path d="M100 0v600M200 0v600M300 0v600M400 0v600M500 0v600M600 0v600M700 0v600"/>
+  </g>
+  <path d="M280 380 L400 220 L520 380" fill="none" stroke="#56707F" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M340 380 L400 300 L460 380" fill="none" stroke="#E8541E" stroke-width="4"/>
+  <text x="400" y="450" text-anchor="middle" font-family="monospace" font-size="20" letter-spacing="4" fill="#56707F">SEKIL YOXDUR</text>
+</svg>

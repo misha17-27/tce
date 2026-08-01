@@ -1,15 +1,15 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/tce/public_html/yeni/
-    - /bin/mkdir -p $DEPLOYPATH
-    - /bin/cp -R index.php $DEPLOYPATH
-    - /bin/cp -R router.php $DEPLOYPATH
-    - /bin/cp -R .htaccess $DEPLOYPATH
-    - /bin/cp -R config $DEPLOYPATH
-    - /bin/cp -R includes $DEPLOYPATH
-    - /bin/cp -R pages $DEPLOYPATH
-    - /bin/cp -R assets $DEPLOYPATH
-    - /bin/cp -R tools $DEPLOYPATH
-    - /bin/mkdir -p $DEPLOYPATH/storage
-    - /bin/chmod 755 $DEPLOYPATH/storage
+    - /bin/mkdir -p /home/tce/public_html/yeni
+    - /bin/mkdir -p /home/tce/public_html/yeni/storage
+    - /bin/cp -f index.php /home/tce/public_html/yeni/
+    - /bin/cp -f router.php /home/tce/public_html/yeni/
+    - /bin/cp -f .htaccess /home/tce/public_html/yeni/
+    - /bin/cp -f README.md /home/tce/public_html/yeni/
+    - /bin/cp -Rf config /home/tce/public_html/yeni/
+    - /bin/cp -Rf includes /home/tce/public_html/yeni/
+    - /bin/cp -Rf pages /home/tce/public_html/yeni/
+    - /bin/cp -Rf assets /home/tce/public_html/yeni/
+    - /bin/cp -Rf tools /home/tce/public_html/yeni/
+    - /bin/chmod 755 /home/tce/public_html/yeni/storage

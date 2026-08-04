@@ -61,6 +61,18 @@ function img_src(string $path): string
     return is_file($file) ? url($path) : url('assets/img/placeholder.svg');
 }
 
+/** WebP version next to the original image, if it exists. */
+function img_webp_src(string $path): ?string
+{
+    $webp = preg_replace('/\.(jpe?g|png)$/i', '.webp', $path);
+    if ($webp === null || $webp === $path) {
+        return null;
+    }
+
+    $file = __DIR__ . '/../' . ltrim($webp, '/');
+    return is_file($file) ? url($webp) : null;
+}
+
 /** CSRF-токен формы. */
 function csrf_token(): string
 {

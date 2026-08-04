@@ -1,72 +1,31 @@
 <?php declare(strict_types=1); ?>
 
 <section class="hero">
-  <div class="hero__grid" aria-hidden="true"></div>
+  <picture class="hero__media" aria-hidden="true">
+    <?php if ($heroWebp = img_webp_src('assets/img/hero.jpg')): ?>
+      <source srcset="<?= e($heroWebp) ?>" type="image/webp">
+    <?php endif; ?>
+    <img src="<?= e(img_src('assets/img/hero.jpg')) ?>" alt="" width="1600" height="998" fetchpriority="high">
+  </picture>
   <div class="shell hero__inner">
-    <p class="eyebrow eyebrow--light">Bakı · <?= date('Y') ?> · Tikinti və mühəndislik</p>
-    <h1 class="hero__title">
-      Keyfiyyətli tikinti və mühəndislik həlləri ilə
-      <em>gələcəyinizi inşa edirik</em>
-    </h1>
-    <p class="hero__lead">
-      Layihələndirmədən açar təslimə qədər bütün mərhələləri bir podratçı çərçivəsində
-      icra edirik — qrafik, büdcə və keyfiyyət nəzarəti bir əldə qalır.
+    <div class="hero__content">
+      <h1 class="hero__title">Keyfiyyətli tikinti və mühəndislik həlləri ilə gələcəyinizi inşa edirik.</h1>
+      <div class="hero__actions">
+        <a class="btn btn--solid" href="<?= url('haqqimizda') ?>">Daha Ətraflı</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--intro section--brand-band">
+  <div class="shell intro-band">
+    <div class="intro-band__label">İnşa Etdiyimiz Həllər, Güclü Gələcəyin Zəminini Qoyur.</div>
+    <p class="lead">
+      Azərbaycanın tikinti və mühəndislik sahəsində lider şirkətlərindən biri olaraq, biz layihələndirmə,
+      avadanlıq təchizatı, tikinti və satış sonrası xidmətlər üzrə geniş təcrübəyə sahibik.
+      Müştərilərimizə kompleks və innovativ həllər təqdim edərək, hər zaman yüksək keyfiyyət və
+      peşəkarlıq təmin edirik. Hədəfimiz, hər bir layihəni mükəmməlliklə həyata keçirməkdir.
     </p>
-    <div class="hero__actions">
-      <a class="btn btn--solid" href="<?= url('layiheler') ?>">Layihələrə baxın</a>
-      <a class="btn btn--ghost" href="<?= url('elaqe') ?>">Təklif alın</a>
-    </div>
-
-    <dl class="hero__stats">
-      <?php foreach ($site['stats'] as $stat): ?>
-        <div class="stat">
-          <dt class="stat__value" data-count="<?= (int)$stat['value'] ?>"><?= (int)$stat['value'] ?><?= e($stat['suffix']) ?></dt>
-          <dd class="stat__label"><?= e($stat['label']) ?></dd>
-        </div>
-      <?php endforeach; ?>
-    </dl>
-  </div>
-</section>
-
-<section class="section section--intro">
-  <div class="shell split">
-    <div class="split__aside">
-      <p class="eyebrow">Haqqımızda</p>
-      <h2 class="h2">İnşa etdiyimiz həllər güclü gələcəyin zəminini qoyur</h2>
-    </div>
-    <div class="split__main">
-      <p class="lead">
-        <?= e($site['full_name']) ?> — Azərbaycanda layihələndirmə, avadanlıq təchizatı,
-        tikinti-quraşdırma və satış sonrası xidmətlər üzrə fəaliyyət göstərən şirkətdir.
-      </p>
-      <p>
-        Sənaye obyektlərindən fərdi yaşayış evlərinə qədər müxtəlif miqyaslı işlər aparırıq.
-        Hər layihə üçün ayrıca komanda formalaşdırılır, sifarişçi ilə birbaşa əlaqə saxlayan
-        layihə rəhbəri təyin olunur. Bu, qərarların günlərlə deyil, saatlarla qəbul edilməsinə imkan verir.
-      </p>
-      <a class="link-arrow" href="<?= url('haqqimizda') ?>">Şirkət haqqında ətraflı</a>
-    </div>
-  </div>
-</section>
-
-<section class="section section--dark">
-  <div class="shell">
-    <header class="section-head section-head--light">
-      <p class="eyebrow eyebrow--light">Xidmətlər</p>
-      <h2 class="h2">Dörd istiqamət, bir məsuliyyət</h2>
-    </header>
-
-    <ul class="service-list">
-      <?php foreach ($site['services'] as $service): ?>
-        <li class="service-row">
-          <span class="service-row__code"><?= e($service['code']) ?></span>
-          <h3 class="service-row__title"><?= e($service['title']) ?></h3>
-          <p class="service-row__text"><?= e($service['lead']) ?></p>
-          <a class="service-row__link" href="<?= url('xidmetlerimiz') ?>#<?= e($service['slug']) ?>"
-             aria-label="<?= e($service['title']) ?> — ətraflı">Ətraflı</a>
-        </li>
-      <?php endforeach; ?>
-    </ul>
   </div>
 </section>
 
@@ -75,22 +34,24 @@
     <header class="section-head section-head--row">
       <div>
         <p class="eyebrow">Layihələr</p>
-        <h2 class="h2">Son işlərimiz</h2>
+        <h2 class="h2">Uğurlu layihələrimiz</h2>
       </div>
-      <a class="btn btn--outline" href="<?= url('layiheler') ?>">Hamısına baxın</a>
+      <a class="btn btn--outline" href="<?= url('layiheler') ?>">Daha çox</a>
     </header>
 
-    <div class="project-grid">
-      <?php foreach (array_slice($site['projects'], 0, 4) as $i => $project): ?>
-        <article class="project-card<?= $i === 0 ? ' project-card--wide' : '' ?>">
+    <div class="project-grid project-grid--featured">
+      <?php foreach (array_slice($site['projects'], 0, 4) as $project): ?>
+        <article class="project-card">
           <a class="project-card__link" href="<?= url('layihe/' . $project['slug']) ?>">
-            <span class="project-card__media">
-              <img src="<?= e(img_src($project['cover'])) ?>" alt="<?= e($project['title']) ?>" loading="lazy">
-            </span>
+            <picture class="project-card__media">
+              <?php if ($webp = img_webp_src($project['cover'])): ?>
+                <source srcset="<?= e($webp) ?>" type="image/webp">
+              <?php endif; ?>
+              <img src="<?= e(img_src($project['cover'])) ?>" alt="<?= e($project['title']) ?>" loading="lazy" width="823" height="639">
+            </picture>
             <span class="project-card__body">
-              <span class="project-card__meta"><?= e($project['category']) ?> · <?= e($project['year']) ?></span>
               <span class="project-card__title"><?= e($project['title']) ?></span>
-              <span class="project-card__summary"><?= e($project['summary']) ?></span>
+              <span class="project-card__meta">Property Details</span>
             </span>
           </a>
         </article>
@@ -99,15 +60,35 @@
   </div>
 </section>
 
+<section class="section section--about">
+  <div class="shell split">
+    <div class="split__aside">
+      <p class="eyebrow">Haqqımızda</p>
+      <h2 class="h2"><?= e($site['full_name']) ?></h2>
+    </div>
+    <div class="split__main">
+      <p class="lead">
+        Azərbaycanın tikinti və mühəndislik sahəsində aparıcı şirkətlərindən biridir. Biz layihələndirmə,
+        avadanlıq təchizatı, tikinti və satış sonrası xidmətlər təklif edirik.
+      </p>
+      <p>
+        Müştərilərimizə kompleks həllər təqdim etməklə, yüksək keyfiyyət və peşəkarlıq vəd edirik.
+        Hər bir layihəyə fərdi yanaşır, qrafik, büdcə və keyfiyyət nəzarətini vahid komandada saxlayırıq.
+      </p>
+      <a class="link-arrow" href="<?= url('haqqimizda') ?>">Daha ətraflı</a>
+    </div>
+  </div>
+</section>
+
 <section class="section section--muted">
   <div class="shell">
     <header class="section-head">
-      <p class="eyebrow">Niyə biz</p>
-      <h2 class="h2">Sifarişçinin bizdə qiymətləndirdiyi altı şey</h2>
+      <p class="eyebrow">Üstünlüklər</p>
+      <h2 class="h2">Bizimlə işləmək üçün əsas səbəblər</h2>
     </header>
 
     <ul class="feature-grid">
-      <?php foreach ($site['advantages'] as $adv): ?>
+      <?php foreach (array_slice($site['advantages'], 0, 5) as $adv): ?>
         <li class="feature">
           <h3 class="feature__title"><?= e($adv['title']) ?></h3>
           <p class="feature__text"><?= e($adv['text']) ?></p>
@@ -120,32 +101,38 @@
 <section class="section">
   <div class="shell">
     <header class="section-head">
-      <p class="eyebrow">İş qaydası</p>
-      <h2 class="h2">İlk görüşdən təhvilə qədər</h2>
+      <p class="eyebrow">Xidmətlər</p>
+      <h2 class="h2">Dörd istiqamət, bir məsuliyyət</h2>
     </header>
 
-    <ol class="process">
-      <?php foreach ($site['process'] as $i => $step): ?>
-        <li class="process__item">
-          <span class="process__num"><?= str_pad((string)($i + 1), 2, '0', STR_PAD_LEFT) ?></span>
-          <h3 class="process__title"><?= e($step['step']) ?></h3>
-          <p class="process__text"><?= e($step['text']) ?></p>
+    <ul class="service-card-grid">
+      <?php foreach ($site['services'] as $service): ?>
+        <li class="service-card">
+          <span class="service-card__code"><?= e($service['code']) ?></span>
+          <h3 class="service-card__title"><?= e($service['title']) ?></h3>
+          <p class="service-card__text"><?= e($service['lead']) ?></p>
+          <a class="link-arrow" href="<?= url('xidmetlerimiz') ?>#<?= e($service['slug']) ?>">Ətraflı</a>
         </li>
       <?php endforeach; ?>
-    </ol>
+    </ul>
   </div>
 </section>
 
 <section class="section section--muted">
   <div class="shell">
     <header class="section-head">
-      <p class="eyebrow">Tərəfdaşlar</p>
+      <p class="eyebrow">Partnyorlar</p>
       <h2 class="h2">Birlikdə işlədiyimiz şirkətlər</h2>
     </header>
     <ul class="partner-grid">
       <?php foreach ($site['partners'] as $partner): ?>
         <li class="partner">
-          <img src="<?= e(img_src($partner['logo'])) ?>" alt="<?= e($partner['name']) ?>" loading="lazy">
+          <picture>
+            <?php if ($webp = img_webp_src($partner['logo'])): ?>
+              <source srcset="<?= e($webp) ?>" type="image/webp">
+            <?php endif; ?>
+            <img src="<?= e(img_src($partner['logo'])) ?>" alt="<?= e($partner['name']) ?>" loading="lazy" width="180" height="72">
+          </picture>
         </li>
       <?php endforeach; ?>
     </ul>

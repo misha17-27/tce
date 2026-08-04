@@ -27,7 +27,12 @@ $others = array_slice($others, 0, 3);
 <section class="section section--tight">
   <div class="shell">
     <figure class="project-hero">
-      <img src="<?= e(img_src($project['cover'])) ?>" alt="<?= e($project['title']) ?>">
+      <picture>
+        <?php if ($webp = img_webp_src($project['cover'])): ?>
+          <source srcset="<?= e($webp) ?>" type="image/webp">
+        <?php endif; ?>
+        <img src="<?= e(img_src($project['cover'])) ?>" alt="<?= e($project['title']) ?>" width="1600" height="1200">
+      </picture>
     </figure>
   </div>
 </section>
@@ -60,7 +65,12 @@ $others = array_slice($others, 0, 3);
         <div class="gallery">
           <?php foreach ($project['gallery'] as $shot): ?>
             <figure class="gallery__item">
-              <img src="<?= e(img_src($shot)) ?>" alt="<?= e($project['title']) ?>" loading="lazy">
+              <picture>
+                <?php if ($webp = img_webp_src($shot)): ?>
+                  <source srcset="<?= e($webp) ?>" type="image/webp">
+                <?php endif; ?>
+                <img src="<?= e(img_src($shot)) ?>" alt="<?= e($project['title']) ?>" loading="lazy" width="823" height="639">
+              </picture>
             </figure>
           <?php endforeach; ?>
         </div>
@@ -81,9 +91,12 @@ $others = array_slice($others, 0, 3);
       <?php foreach ($others as $other): ?>
         <article class="project-card">
           <a class="project-card__link" href="<?= url('layihe/' . $other['slug']) ?>">
-            <span class="project-card__media">
-              <img src="<?= e(img_src($other['cover'])) ?>" alt="<?= e($other['title']) ?>" loading="lazy">
-            </span>
+            <picture class="project-card__media">
+              <?php if ($webp = img_webp_src($other['cover'])): ?>
+                <source srcset="<?= e($webp) ?>" type="image/webp">
+              <?php endif; ?>
+              <img src="<?= e(img_src($other['cover'])) ?>" alt="<?= e($other['title']) ?>" loading="lazy" width="823" height="639">
+            </picture>
             <span class="project-card__body">
               <span class="project-card__meta"><?= e($other['category']) ?> · <?= e($other['year']) ?></span>
               <span class="project-card__title"><?= e($other['title']) ?></span>

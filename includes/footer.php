@@ -7,14 +7,9 @@
     <div class="footer-grid">
 
       <div class="footer-col footer-col--brand">
-        <a class="logo logo--light" href="<?= url('') ?>">
-          <span class="logo__mark" aria-hidden="true">
-            <svg viewBox="0 0 32 32" width="32" height="32" fill="none">
-              <path d="M2 30 L16 2 L30 30" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/>
-              <path d="M9 30 L16 16 L23 30" stroke="currentColor" stroke-width="1.5" opacity=".55"/>
-            </svg>
-          </span>
-          <span class="logo__text"><span class="logo__abbr"><?= e($site['name']) ?></span></span>
+        <a class="logo logo--light" href="<?= url('') ?>" aria-label="<?= e($site['full_name']) ?> — ana səhifə">
+          <img class="logo__image logo__image--light" src="<?= e(img_src('assets/img/logo-light.png')) ?>"
+               alt="<?= e($site['full_name']) ?>" width="212" height="40" loading="lazy">
         </a>
         <p class="footer-lead"><?= e($site['tagline']) ?> ilə gələcəyinizi inşa edirik.</p>
         <ul class="social">
@@ -25,7 +20,7 @@
       </div>
 
       <div class="footer-col">
-        <h2 class="footer-title">Səhifələr</h2>
+        <h2 class="footer-title">Yararlı linklər</h2>
         <ul class="footer-list">
           <?php foreach ($site['nav'] as $slug => $label): ?>
             <li><a href="<?= url($slug) ?>"><?= e($label) ?></a></li>
@@ -43,11 +38,11 @@
       </div>
 
       <div class="footer-col">
-        <h2 class="footer-title">Əlaqə</h2>
+        <h2 class="footer-title">Bizimlə əlaqə</h2>
         <ul class="footer-list footer-list--contact">
-          <li><a href="tel:<?= e($site['contacts']['phone_href']) ?>"><?= e($site['contacts']['phone']) ?></a></li>
-          <li><a href="mailto:<?= e($site['contacts']['email']) ?>"><?= e($site['contacts']['email']) ?></a></li>
-          <li><span><?= e($site['contacts']['address']) ?></span></li>
+          <li><a href="tel:<?= e($site['contacts']['phone_href']) ?>">Telefon: <?= e($site['contacts']['phone']) ?></a></li>
+          <li><a href="mailto:<?= e($site['contacts']['email']) ?>">Mail: <?= e($site['contacts']['email']) ?></a></li>
+          <li><span>Ünvan: <?= e($site['contacts']['address']) ?></span></li>
           <li><span><?= e($site['contacts']['hours']) ?></span></li>
         </ul>
       </div>

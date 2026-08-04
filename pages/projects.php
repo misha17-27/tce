@@ -36,9 +36,12 @@ $categories = array_keys($categories);
       <?php foreach ($site['projects'] as $project): ?>
         <article class="project-card" data-category="<?= e($project['category']) ?>">
           <a class="project-card__link" href="<?= url('layihe/' . $project['slug']) ?>">
-            <span class="project-card__media">
-              <img src="<?= e(img_src($project['cover'])) ?>" alt="<?= e($project['title']) ?>" loading="lazy">
-            </span>
+            <picture class="project-card__media">
+              <?php if ($webp = img_webp_src($project['cover'])): ?>
+                <source srcset="<?= e($webp) ?>" type="image/webp">
+              <?php endif; ?>
+              <img src="<?= e(img_src($project['cover'])) ?>" alt="<?= e($project['title']) ?>" loading="lazy" width="823" height="639">
+            </picture>
             <span class="project-card__body">
               <span class="project-card__meta"><?= e($project['category']) ?> · <?= e($project['year']) ?> · <?= e($project['location']) ?></span>
               <span class="project-card__title"><?= e($project['title']) ?></span>

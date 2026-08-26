@@ -388,16 +388,24 @@ return [
         ],
     ],
 
-    // ── Партнёры (положите логотипы в assets/img/partners/) ─────────────────
+    // ── Партнёры (логотипы перенесены со старого сайта tce.az) ──────────────
     'partners' => [
-        ['name' => 'Partner 01', 'logo' => 'assets/img/partners/p01.png'],
-        ['name' => 'Partner 02', 'logo' => 'assets/img/partners/p02.png'],
-        ['name' => 'Partner 03', 'logo' => 'assets/img/partners/p03.png'],
-        ['name' => 'Partner 04', 'logo' => 'assets/img/partners/p04.png'],
-        ['name' => 'Partner 05', 'logo' => 'assets/img/partners/p05.png'],
-        ['name' => 'Partner 06', 'logo' => 'assets/img/partners/p06.png'],
-        ['name' => 'Partner 07', 'logo' => 'assets/img/partners/p07.png'],
-        ['name' => 'Partner 08', 'logo' => 'assets/img/partners/p08.png'],
+        ['name' => 'Partner 01', 'logo' => 'assets/img/partners/partner-01.webp', 'sort' => 0,  'visible' => 1],
+        ['name' => 'Partner 02', 'logo' => 'assets/img/partners/partner-02.webp', 'sort' => 1,  'visible' => 1],
+        ['name' => 'Partner 03', 'logo' => 'assets/img/partners/partner-03.jpg',  'sort' => 2,  'visible' => 1],
+        ['name' => 'Partner 04', 'logo' => 'assets/img/partners/partner-04.webp', 'sort' => 3,  'visible' => 1],
+        ['name' => 'Partner 05', 'logo' => 'assets/img/partners/partner-05.png',  'sort' => 4,  'visible' => 1],
+        ['name' => 'Partner 06', 'logo' => 'assets/img/partners/partner-06.webp', 'sort' => 5,  'visible' => 1],
+        ['name' => 'Partner 07', 'logo' => 'assets/img/partners/partner-07.webp', 'sort' => 6,  'visible' => 1],
+        ['name' => 'Partner 08', 'logo' => 'assets/img/partners/partner-08.png',  'sort' => 7,  'visible' => 1],
+        ['name' => 'Partner 09', 'logo' => 'assets/img/partners/partner-09.png',  'sort' => 8,  'visible' => 1],
+        ['name' => 'Partner 10', 'logo' => 'assets/img/partners/partner-10.png',  'sort' => 9,  'visible' => 1],
+        ['name' => 'Partner 11', 'logo' => 'assets/img/partners/partner-11.png',  'sort' => 10, 'visible' => 1],
+        ['name' => 'Partner 12', 'logo' => 'assets/img/partners/partner-12.webp', 'sort' => 11, 'visible' => 1],
+        ['name' => 'Partner 13', 'logo' => 'assets/img/partners/partner-13.png',  'sort' => 12, 'visible' => 1],
+        ['name' => 'Partner 14', 'logo' => 'assets/img/partners/partner-14.png',  'sort' => 13, 'visible' => 1],
+        ['name' => 'Partner 15', 'logo' => 'assets/img/partners/partner-15.png',  'sort' => 14, 'visible' => 1],
+        ['name' => 'Partner 16', 'logo' => 'assets/img/partners/partner-16.png',  'sort' => 15, 'visible' => 1],
     ],
 
     // ── Форма обратной связи ────────────────────────────────────────────────

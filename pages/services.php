@@ -1,48 +1,38 @@
-<?php declare(strict_types=1); ?>
+<?php declare(strict_types=1);
 
-<section class="page-head">
-  <div class="shell">
-    <nav class="crumbs" aria-label="Naviqasiya yolu">
-      <a href="<?= url('') ?>">Ana səhifə</a>
-      <span aria-hidden="true">/</span>
-      <span aria-current="page">Xidmətlərimiz</span>
-    </nav>
-    <h1 class="page-title">Xidmətlərimiz</h1>
-    <p class="page-lead">
-      Dörd istiqamət ayrı-ayrılıqda da sifariş oluna bilər, açar təslimi paket kimi də.
-    </p>
-  </div>
-</section>
+$serviceGroups = (array)($site['service_groups'] ?? []);
+?>
 
-<section class="section">
-  <div class="shell">
-    <ul class="service-index">
-      <?php foreach ($site['services'] as $service): ?>
-        <li><a href="#<?= e($service['slug']) ?>"><span><?= e($service['code']) ?></span><?= e($service['title']) ?></a></li>
-      <?php endforeach; ?>
-    </ul>
-  </div>
-</section>
-
-<?php foreach ($site['services'] as $i => $service): ?>
-  <section class="section service-block<?= $i % 2 ? ' section--muted' : '' ?>" id="<?= e($service['slug']) ?>">
-    <div class="shell split">
-      <div class="split__aside">
-        <p class="eyebrow"><?= e($service['code']) ?></p>
-        <h2 class="h2"><?= e($service['title']) ?></h2>
-        <p class="service-block__lead"><?= e($service['lead']) ?></p>
-      </div>
-      <div class="split__main">
-        <p><?= e($service['text']) ?></p>
-        <ul class="check-list">
-          <?php foreach ($service['items'] as $item): ?>
-            <li><?= e($item) ?></li>
-          <?php endforeach; ?>
-        </ul>
-        <a class="link-arrow" href="<?= url('elaqe') ?>">Bu xidmət üzrə təklif alın</a>
-      </div>
+<section class="services-hero">
+  <div class="shell services-hero__inner">
+    <div>
+      <p class="services-kicker"><?= e(site_text('services.kicker', 'Şirkət Haqqında')) ?></p>
+      <h1 class="services-title">Xidmətlərimiz</h1>
     </div>
-  </section>
-<?php endforeach; ?>
+    <p class="services-hero__text"><?= e(site_text('services.hero_text')) ?></p>
+  </div>
+</section>
+
+<section class="section services-detail">
+  <div class="shell">
+    <div class="services-detail__head">
+      <p class="eyebrow"><?= e(site_text('services.head_eyebrow', 'Fəaliyyət istiqamətləri')) ?></p>
+      <h2 class="h2"><?= e(site_text('services.head_title', 'Tikinti və mühəndislik xidmətləri')) ?></h2>
+    </div>
+    <div class="services-detail__grid">
+      <?php foreach ($serviceGroups as $i => $group): ?>
+        <article class="services-detail__card" id="<?= e($group['slug'] ?? '') ?>">
+          <span class="services-detail__number"><?= str_pad((string)($i + 1), 2, '0', STR_PAD_LEFT) ?></span>
+          <h3><?= e($group['title'] ?? '') ?></h3>
+          <ul>
+            <?php foreach ((array)($group['items'] ?? []) as $item): ?>
+              <li><?= e((string)$item) ?></li>
+            <?php endforeach; ?>
+          </ul>
+        </article>
+      <?php endforeach; ?>
+    </div>
+  </div>
+</section>
 
 <?php require __DIR__ . '/_cta.php'; ?>

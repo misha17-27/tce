@@ -4,6 +4,9 @@ RewriteEngine On
 # Если сайт лежит в подпапке, раскомментируйте и укажите её:
 # RewriteBase /tce-php/
 
+# Служебные каталоги недоступны из браузера
+RewriteRule ^(storage|config|tools|\.git)(/|$) - [F,L]
+
 # Существующие файлы и папки отдаём как есть
 RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
@@ -19,11 +22,15 @@ RewriteRule ^ / [R=301,L]
 # ── Кодировка ───────────────────────────────────────────────────────────────
 AddDefaultCharset UTF-8
 
+# ── Запрет листинга каталогов ───────────────────────────────────────────────
+Options -Indexes
+
 # ── Заголовки безопасности ──────────────────────────────────────────────────
 <IfModule mod_headers.c>
   Header set X-Content-Type-Options "nosniff"
   Header set X-Frame-Options "SAMEORIGIN"
   Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "camera=(), microphone=(), geolocation=()"
 </IfModule>
 
 # ── Кеш статики ─────────────────────────────────────────────────────────────
@@ -44,6 +51,9 @@ AddDefaultCharset UTF-8
 </IfModule>
 
 # ── Закрываем служебные файлы ───────────────────────────────────────────────
-<FilesMatch "\.(log|md)$">
+<FilesMatch "\.(log|md|json|ya?ml|lock|sh|bak|sql)$">
+  Require all denied
+</FilesMatch>
+<FilesMatch "^\.(git|env)">
   Require all denied
 </FilesMatch>

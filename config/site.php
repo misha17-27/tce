@@ -11,7 +11,7 @@ return [
     'full_name'   => 'Turan Construction and Engineering',
     'tagline'     => 'Keyfiyyətli tikinti və mühəndislik həlləri',
     'lang'        => 'az',
-    'base_url'    => '', // напр. '/tce-php' если сайт лежит в подпапке. Пусто = корень домена.
+    'base_url'    => '/yeni', // напр. '/tce-php' если сайт лежит в подпапке. Пусто = корень домена.
 
     // ── Контакты ────────────────────────────────────────────────────────────
     'contacts' => [
@@ -35,6 +35,151 @@ return [
         'xidmetlerimiz'=> 'Xidmətlərimiz',
         'layiheler'    => 'Layihələr',
         'elaqe'        => 'Əlaqə',
+    ],
+
+    // ── Медиа ───────────────────────────────────────────────────────────────
+    'media' => [
+        'hero' => 'assets/img/hero.jpg',
+    ],
+
+    // ── Настройки (правятся в админке: SEO / SMTP / Безопасность) ───────────
+    'settings' => [
+        'og_image'        => '',
+        'search_visible'  => '1',
+        'notify_email'    => '',
+        'turnstile_site'  => '',
+        'turnstile_secret'=> '',
+        'smtp_host'       => '',
+        'smtp_port'       => '',
+        'smtp_user'       => '',
+        'smtp_pass'       => '',
+        'smtp_secure'     => 'tls',
+        'smtp_from'       => '',
+        'smtp_from_name'  => '',
+    ],
+
+    // ── SEO ─────────────────────────────────────────────────────────────────
+    'seo' => [
+        'description' => '',
+        'robots'      => 'index,follow',
+        'pages'       => [],
+    ],
+
+    // ── Редактируемые тексты страниц (админка → Страницы) ───────────────────
+    'content' => [
+        'home.hero_title'       => 'Keyfiyyətli tikinti və mühəndislik həlləri ilə gələcəyinizi inşa edirik.',
+        'home.intro_label'      => 'İnşa Etdiyimiz Həllər, Güclü Gələcəyin Zəminini Qoyur.',
+        'home.intro_text'       => 'Azərbaycanın tikinti və mühəndislik sahəsində lider şirkətlərindən biri olaraq, biz layihələndirmə, avadanlıq təchizatı, tikinti və satış sonrası xidmətlər üzrə geniş təcrübəyə sahibik. Müştərilərimizə kompleks və innovativ həllər təqdim edərək, hər zaman yüksək keyfiyyət və peşəkarlıq təmin edirik. Hədəfimiz, hər bir layihəni mükəmməlliklə həyata keçirməkdir.',
+        'home.projects_eyebrow' => 'Layihələr',
+        'home.projects_title'   => 'Uğurlu layihələrimiz',
+        'home.about_eyebrow'    => 'Haqqımızda',
+        'home.about_lead'       => 'Azərbaycanın tikinti və mühəndislik sahəsində aparıcı şirkətlərindən biridir. Biz layihələndirmə, avadanlıq təchizatı, tikinti və satış sonrası xidmətlər təklif edirik.',
+        'home.about_text'       => 'Müştərilərimizə kompleks həllər təqdim etməklə, yüksək keyfiyyət və peşəkarlıq vəd edirik. Hər bir layihəyə fərdi yanaşır, qrafik, büdcə və keyfiyyət nəzarətini vahid komandada saxlayırıq.',
+        'home.adv_eyebrow'      => 'Üstünlüklər',
+        'home.adv_title'        => 'Bizimlə işləmək üçün əsas səbəblər',
+        'home.services_eyebrow' => 'Xidmətlər',
+        'home.services_title'   => 'Dörd istiqamət, bir məsuliyyət',
+        'home.partners_eyebrow' => 'Partnyorlar',
+        'home.partners_title'   => 'Birlikdə işlədiyimiz şirkətlər',
+
+        'about.kicker'     => 'Şirkət Haqqında',
+        'about.intro'      => '13 yanvar 2025-ci ildə əsası qoyulan şirkətimiz inşaat və mühəndislik sahəsində innovativ və yüksək keyfiyyətli həllər təqdim edən etibarlı tərəfdaşdır. Biz müasir tikinti texnologiyalarından istifadə edərək iri infrastruktur layihələrinin, sənaye obyektlərinin, yaşayış və qeyri-yaşayış binalarının, hidrotexniki və yol tikinti işlərinin həyata keçirilməsində ixtisaslaşırıq.',
+        'about.p1'         => 'Məqsədimiz müştərilərimizin ehtiyaclarına uyğun ən optimal və effektiv həlləri təqdim etməkdir. Bizim üçün hər bir layihə fərdi yanaşma tələb edir və biz yüksək peşəkarlıq, innovativ texnologiyalar və davamlı inkişaf prinsipləri əsasında fəaliyyət göstəririk.',
+        'about.p2'         => 'Şirkətimizin peşəkar komandası mühəndislik və tikinti sahəsində geniş təcrübəyə malikdir. Təhlükəsizlik standartlarına ciddi riayət etməklə və ətraf mühitə dost texnologiyalar tətbiq etməklə, biz tikinti sahəsində dayanıqlı və uzunömürlü obyektlər yaradırıq.',
+        'about.p3'         => 'Bizim fəaliyyət sahəmiz genişdir və torpaq işlərindən başlayaraq, yol və körpülərin tikintisinə, sənaye obyektlərinin inşasına qədər bir çox sahəni əhatə edir. Hər bir layihəmiz müasir standartlara cavab verir və keyfiyyətə zəmanət veririk.',
+        'about.p4'         => 'Biz etibarlılığımız, dəqiqliyimiz və müştəri məmnuniyyətinə verdiyimiz üstünlük ilə seçilirik. Gələcəkdə daha böyük layihələr həyata keçirmək və tikinti sahəsində yeni nailiyyətlər əldə etmək üçün fəaliyyətimizi genişləndirməyə davam edirik.',
+        'about.figcaption' => 'Keyfiyyətli tikinti və mühəndislik həlləri ilə gələcəyinizi inşa edirik.',
+        'about.certs_title'=> 'Sertifikatlar',
+        'about.image'      => 'assets/img/about/years.png',
+        'about.cert1'      => 'assets/img/about/cert-01.webp',
+        'about.cert2'      => 'assets/img/about/cert-02.webp',
+        'about.cert3'      => 'assets/img/about/cert-03.webp',
+
+        'services.kicker'       => 'Şirkət Haqqında',
+        'services.hero_text'    => 'Biz tikinti və mühəndislik sahəsində geniş xidmətlər təqdim edirik. Yol və körpülərin tikintisi, sənaye obyektlərinin inşası, torpaq işləri və digər mühəndislik həlləri sahəsində peşəkar yanaşma ilə fəaliyyət göstəririk. Təhlükəsizlik standartlarına riayət edərək və innovativ texnologiyalardan istifadə edərək, uzunömürlü və dayanıqlı obyektlər inşa edirik.',
+        'services.head_eyebrow' => 'Fəaliyyət istiqamətləri',
+        'services.head_title'   => 'Tikinti və mühəndislik xidmətləri',
+
+        'projects.lead' => 'Sənaye, infrastruktur və yaşayış obyektləri üzrə tamamlanmış işlərimiz.',
+
+        'contact.lead'       => 'Zəng edin, yazın və ya formanı doldurun — bir iş günü ərzində cavab veririk.',
+        'contact.info_title' => 'Rekvizitlər',
+        'contact.form_title' => 'Müraciət formu',
+
+        'cta.title' => 'Layihəniz var? Danışaq.',
+        'cta.text'  => 'Sahəyə baxış və ilkin büdcə hesabatı ödənişsizdir. Bir iş günü ərzində cavab veririk.',
+    ],
+
+    // ── Группы услуг (страница «Xidmətlərimiz») ─────────────────────────────
+    'service_groups' => [
+        [
+            'slug'  => 'xususi-torpaq-isleri',
+            'title' => 'Xüsusi torpaq işləri',
+            'items' => [
+                'Ankerlərin torpağa bərkidilməsi və binaların “torpaqda divar” üsulu ilə tikilməsi.',
+                'Enmə quyularının və kessonların qurulması.',
+                'Qazma-partlayış işləri və qaya torpaqlarının çıxarılması.',
+            ],
+        ],
+        [
+            'slug'  => 'beton-metal-konstruksiyalar',
+            'title' => 'Beton və metal konstruksiyalar',
+            'items' => [
+                'Beton və dəmir-beton konstruksiyaların quraşdırılması.',
+                'Metal konstruksiyaların quraşdırılması.',
+                'Taxta konstruksiyaların quraşdırılması.',
+            ],
+        ],
+        [
+            'slug'  => 'fasad-isleri',
+            'title' => 'Fasad işləri',
+            'items' => [
+                'Binaların fasadlarının tikintisi və bərpası.',
+            ],
+        ],
+        [
+            'slug'  => 'muhendis-kommunikasiya-sebekeler',
+            'title' => 'Mühəndis-kommunikasiya və şəbəkə sistemləri',
+            'items' => [
+                'Su, qaz, elektrik və rabitə şəbəkələrinin qurulması.',
+            ],
+        ],
+        [
+            'slug'  => 'hidrotekniki-isler',
+            'title' => 'Hidrotekniki işlər',
+            'items' => [
+                'Sualtı-texniki işlər.',
+                'Dambaların (torpaq bəndlərinin) tikintisi.',
+                'Limanların, pirs və sahilbərkitmə sistemlərinin tikintisi.',
+                'Su anbarlarının layihələndirilməsi və tikintisi.',
+            ],
+        ],
+        [
+            'slug'  => 'yol-tikintisi',
+            'title' => 'Yol tikintisi',
+            'items' => [
+                'Avtomobil yollarının çəkilişi və yenidən qurulması.',
+                'Aerodromların uçuş-enmə zolaqlarının tikintisi.',
+                'Körpülər, estakadalar və yol ötürücülərinin tikintisi.',
+            ],
+        ],
+        [
+            'slug'  => 'xususi-qurgularin-tikintisi',
+            'title' => 'Xüsusi qurğuların tikintisi',
+            'items' => [
+                'Qaz anbarları, rezervuarlar və qazholderlərin tikintisi.',
+                'Elektrik ötürücü xətlərinin quraşdırılması.',
+            ],
+        ],
+        [
+            'slug'  => 'senaye-mulki-obyektler',
+            'title' => 'Sənaye və mülki obyektlərin tikintisi',
+            'items' => [
+                'Aşırımı 24 metrədək və 24 metrdən çox olan tikililər.',
+                'Hündürlüyü 65 metrədək və 65 metrdən çox olan obyektlər.',
+                '5000 nəfərlik və daha çox tutumu olan binalar.',
+            ],
+        ],
     ],
 
     // ── Цифры для счётчика ──────────────────────────────────────────────────
@@ -135,7 +280,26 @@ return [
             'area'     => '480 m²',
             'client'   => 'Fərdi sifarişçi',
             'cover'    => 'assets/img/projects/villa.jpg',
-            'gallery'  => ['assets/img/projects/villa.jpg'],
+            'gallery'  => [
+                'assets/img/projects/villa.jpg',
+                'assets/img/projects/villa/villa-gallery-01.jpeg',
+                'assets/img/projects/villa/villa-gallery-02.jpeg',
+                'assets/img/projects/villa/villa-gallery-03.jpeg',
+                'assets/img/projects/villa/villa-gallery-04.jpeg',
+                'assets/img/projects/villa/villa-gallery-05.jpeg',
+                'assets/img/projects/villa/villa-gallery-06.jpeg',
+                'assets/img/projects/villa/villa-gallery-07.jpeg',
+                'assets/img/projects/villa/villa-gallery-08.jpeg',
+                'assets/img/projects/villa/villa-gallery-09.jpeg',
+                'assets/img/projects/villa/villa-gallery-10.jpeg',
+                'assets/img/projects/villa/villa-gallery-11.jpeg',
+                'assets/img/projects/villa/villa-gallery-12.jpeg',
+                'assets/img/projects/villa/villa-gallery-13.jpeg',
+                'assets/img/projects/villa/villa-gallery-14.jpeg',
+                'assets/img/projects/villa/villa-gallery-15.jpeg',
+                'assets/img/projects/villa/villa-gallery-16.jpeg',
+                'assets/img/projects/villa/villa-gallery-17.jpeg',
+            ],
             'summary'  => 'İki mərtəbəli fərdi yaşayış evi: layihələndirmə, tikinti və daxili işlər.',
             'body'     => 'Sifarişçi ailəsi üçün iki mərtəbəli fərdi ev layihələndirilmiş və açar təslimi şəkildə təhvil verilmişdir. Konstruktiv həll kimi monolit karkas seçilib, fasadda təbii daş və şüşə kombinasiyası tətbiq olunub. Mühəndis sistemləri — istilik, ventilyasiya, su və elektrik — vahid layihə çərçivəsində icra edilib.',
             'scope'    => ['Layihələndirmə', 'Bünövrə və karkas', 'Fasad işləri', 'Mühəndis sistemləri', 'Daxili dekorasiya'],

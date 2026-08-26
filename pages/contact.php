@@ -13,9 +13,7 @@ $old  = $form['old'];
       <span aria-current="page">Əlaqə</span>
     </nav>
     <h1 class="page-title">Əlaqə</h1>
-    <p class="page-lead">
-      Zəng edin, yazın və ya formanı doldurun — bir iş günü ərzində cavab veririk.
-    </p>
+    <p class="page-lead"><?= e(site_text('contact.lead')) ?></p>
   </div>
 </section>
 
@@ -23,7 +21,7 @@ $old  = $form['old'];
   <div class="shell contact-layout">
 
     <aside class="contact-info">
-      <h2 class="h3">Rekvizitlər</h2>
+      <h2 class="h3"><?= e(site_text('contact.info_title', 'Rekvizitlər')) ?></h2>
       <ul class="contact-list">
         <li>
           <span class="contact-list__label">Telefon</span>
@@ -45,7 +43,7 @@ $old  = $form['old'];
     </aside>
 
     <div class="contact-form-wrap">
-      <h2 class="h3">Müraciət formu</h2>
+      <h2 class="h3"><?= e(site_text('contact.form_title', 'Müraciət formu')) ?></h2>
 
       <?php if ($form['ok'] === true): ?>
         <div class="notice notice--ok" role="status">
@@ -103,6 +101,8 @@ $old  = $form['old'];
             <p class="field__error"><?= e($form['errors']['message']) ?></p>
           <?php endif; ?>
         </div>
+
+        <?php turnstile_widget(); ?>
 
         <button class="btn btn--solid" type="submit">Göndər</button>
         <p class="form__note">Formu göndərməklə məlumatlarınızın müraciətə baxılması üçün emalına razılıq verirsiniz.</p>

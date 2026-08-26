@@ -1,94 +1,50 @@
 <?php declare(strict_types=1); ?>
 
-<section class="page-head">
-  <div class="shell">
-    <nav class="crumbs" aria-label="Naviqasiya yolu">
-      <a href="<?= url('') ?>">Ana səhifə</a>
-      <span aria-hidden="true">/</span>
-      <span aria-current="page">Haqqımızda</span>
-    </nav>
-    <h1 class="page-title">Haqqımızda</h1>
-    <p class="page-lead">
-      Layihələndirmə, tikinti və mühəndislik sahəsində fəaliyyət göstərən Azərbaycan şirkəti.
-    </p>
+<section class="about-hero">
+  <div class="shell about-hero__inner">
+    <div>
+      <p class="about-kicker"><?= e(site_text('about.kicker', 'Şirkət Haqqında')) ?></p>
+      <h1 class="about-title"><?= e($site['full_name']) ?></h1>
+    </div>
+    <p class="about-hero__text"><?= e(site_text('about.intro')) ?></p>
   </div>
 </section>
 
-<section class="section">
-  <div class="shell split">
-    <div class="split__aside">
-      <p class="eyebrow">Şirkət</p>
-      <h2 class="h2"><?= e($site['full_name']) ?></h2>
-    </div>
-    <div class="split__main">
-      <p class="lead">
-        Fəaliyyətimiz sadə prinsipə əsaslanır: sifarişçi bir podratçı ilə danışsın,
-        qalan bütün əlaqələndirməni biz öz üzərimizə götürək.
-      </p>
-      <p>
-        Layihə bölməsi, tədarük xidməti və tikinti briqadaları eyni komandanın hissəsidir.
-        Bu, layihədə edilən dəyişikliyin dərhal smetada və qrafikdə əks olunmasına imkan verir —
-        sahədə “layihəçi başqa şey çəkib, usta başqa şey qurub” vəziyyəti yaranmır.
-      </p>
-      <p>
-        Hər obyekt üzrə icra sənədləri toplanır, gizli işlər aktlaşdırılır və təhvil zamanı
-        sifarişçiyə tam sənəd paketi verilir. Bu paket sonrakı istismar, təmir və
-        rəsmi rəsmiləşdirmə üçün lazım olur.
-      </p>
+<section class="section about-story">
+  <div class="shell about-story__grid">
+    <figure class="about-card">
+      <img src="<?= e(img_src(site_text('about.image', 'assets/img/about/years.png'))) ?>" alt="<?= e($site['full_name']) ?> layihəsi" width="760" height="460" loading="lazy">
+      <figcaption><?= e(site_text('about.figcaption')) ?></figcaption>
+    </figure>
+
+    <div class="about-copy">
+      <?php foreach (['about.p1', 'about.p2', 'about.p3', 'about.p4'] as $key): ?>
+        <?php if (site_text($key) !== ''): ?>
+          <p><?= e(site_text($key)) ?></p>
+        <?php endif; ?>
+      <?php endforeach; ?>
     </div>
   </div>
 </section>
 
-<section class="section section--dark">
+<?php
+$certificates = array_values(array_filter([
+    site_text('about.cert1'),
+    site_text('about.cert2'),
+    site_text('about.cert3'),
+], static fn(string $path): bool => trim($path) !== ''));
+?>
+<?php if ($certificates): ?>
+<section class="section about-certificates">
   <div class="shell">
-    <header class="section-head section-head--light">
-      <p class="eyebrow eyebrow--light">Rəqəmlərlə</p>
-      <h2 class="h2">Bu günə qədər</h2>
-    </header>
-    <dl class="stat-grid">
-      <?php foreach ($site['stats'] as $stat): ?>
-        <div class="stat stat--lg">
-          <dt class="stat__value"><?= (int)$stat['value'] ?><?= e($stat['suffix']) ?></dt>
-          <dd class="stat__label"><?= e($stat['label']) ?></dd>
-        </div>
+    <h2 class="about-certificates__title"><?= e(site_text('about.certs_title', 'Sertifikatlar')) ?></h2>
+    <div class="certificate-grid">
+      <?php foreach ($certificates as $i => $certificate): ?>
+        <figure class="certificate-card">
+          <img src="<?= e(img_src($certificate)) ?>" alt="Sertifikat <?= $i + 1 ?>" width="520" height="720" loading="lazy">
+        </figure>
       <?php endforeach; ?>
-    </dl>
+    </div>
   </div>
 </section>
-
-<section class="section">
-  <div class="shell">
-    <header class="section-head">
-      <p class="eyebrow">Dəyərlər</p>
-      <h2 class="h2">İşdə əsas götürdüyümüz qaydalar</h2>
-    </header>
-    <ul class="feature-grid">
-      <?php foreach ($site['advantages'] as $adv): ?>
-        <li class="feature">
-          <h3 class="feature__title"><?= e($adv['title']) ?></h3>
-          <p class="feature__text"><?= e($adv['text']) ?></p>
-        </li>
-      <?php endforeach; ?>
-    </ul>
-  </div>
-</section>
-
-<section class="section section--muted">
-  <div class="shell">
-    <header class="section-head">
-      <p class="eyebrow">Proses</p>
-      <h2 class="h2">Layihə necə irəliləyir</h2>
-    </header>
-    <ol class="process">
-      <?php foreach ($site['process'] as $i => $step): ?>
-        <li class="process__item">
-          <span class="process__num"><?= str_pad((string)($i + 1), 2, '0', STR_PAD_LEFT) ?></span>
-          <h3 class="process__title"><?= e($step['step']) ?></h3>
-          <p class="process__text"><?= e($step['text']) ?></p>
-        </li>
-      <?php endforeach; ?>
-    </ol>
-  </div>
-</section>
-
-<?php require __DIR__ . '/_cta.php'; ?>
+<?php endif; ?>

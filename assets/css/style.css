@@ -319,7 +319,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 }
 
 /* Мобильное меню */
-@media (max-width: 1023px) {
+@media (max-width: 1099px) {
   .burger { display: block; }
   .logo__full { display: none; }
 
@@ -363,7 +363,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
   .nav__phone { font-size: 1.05rem; }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1100px) {
   .nav-backdrop { display: none !important; }
 }
 
@@ -449,17 +449,35 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
 /* --- Шапка внутренних страниц ------------------------------------------- */
 .page-head {
-  background: var(--ink);
-  color: #fff;
+  position: relative;
+  overflow: hidden;
+  background: var(--paper-alt);
+  color: var(--ink);
   padding-block: clamp(2.5rem, 7vw, 4.5rem);
 }
-.page-head .eyebrow { color: rgba(255,255,255,.6); }
+.page-head::after {
+  content: "";
+  position: absolute;
+  right: min(6vw, 5rem);
+  bottom: -5rem;
+  width: min(34rem, 45vw);
+  aspect-ratio: 1;
+  border: 1px solid rgba(1,22,64,.1);
+  transform: rotate(18deg);
+  pointer-events: none;
+}
+.page-head .shell {
+  position: relative;
+  z-index: 1;
+}
+.page-head .eyebrow { color: var(--ink); }
 .page-title {
+  color: var(--ink);
   font-size: clamp(1.9rem, 1.2rem + 3.4vw, 3.6rem);
   text-transform: uppercase;
   margin-bottom: .5rem;
 }
-.page-lead { max-width: 52ch; color: rgba(255,255,255,.74); }
+.page-lead { max-width: 52ch; color: var(--ink-soft); }
 
 .crumbs {
   display: flex;
@@ -468,7 +486,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
   font-family: var(--font-mono);
   font-size: .78rem;
   letter-spacing: .06em;
-  color: rgba(255,255,255,.55);
+  color: var(--steel);
   margin-bottom: 1.5rem;
 }
 .crumbs a:hover { color: var(--signal); }
@@ -558,6 +576,124 @@ button { font: inherit; color: inherit; cursor: pointer; }
 }
 
 /* --- Карточки проектов -------------------------------------------------- */
+/* --- Services page, TCE legacy-style hero ----------------------------- */
+.services-hero {
+  background: var(--paper-alt);
+  padding-block: clamp(4rem, 8vw, 7rem) clamp(5.25rem, 10vw, 8.8rem);
+}
+
+.services-hero__inner {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(20rem, .78fr);
+  gap: clamp(2.5rem, 9vw, 9rem);
+  align-items: center;
+}
+
+.services-kicker {
+  margin: 0 0 1rem;
+  color: var(--steel);
+  font-size: .98rem;
+}
+
+.services-title {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(3rem, 5vw, 5rem);
+  font-weight: 300;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.services-hero__text {
+  margin: 0;
+  color: #9f9fa8;
+  font-size: 1.02rem;
+  line-height: 1.85;
+}
+
+.services-detail {
+  background: #fff;
+  padding-block: clamp(4.5rem, 8vw, 7rem);
+}
+
+.services-detail__head {
+  max-width: 48rem;
+  margin-bottom: clamp(2rem, 5vw, 4rem);
+}
+
+.services-detail__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+
+.services-detail__card {
+  position: relative;
+  min-height: 19rem;
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: #fff;
+}
+
+.services-detail__number {
+  display: block;
+  margin-bottom: 1.5rem;
+  color: var(--signal);
+  font-family: var(--font-mono);
+  font-size: .82rem;
+}
+
+.services-detail__card h3 {
+  max-width: 18ch;
+  margin: 0 0 1.25rem;
+  color: var(--ink);
+  font-size: clamp(1.35rem, 1.2vw, 1.75rem);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.services-detail__card ul {
+  display: grid;
+  gap: .7rem;
+  margin: 0;
+}
+
+.services-detail__card li {
+  position: relative;
+  padding-left: 1.15rem;
+  color: var(--ink-soft);
+  line-height: 1.65;
+}
+
+.services-detail__card li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .78em;
+  width: .38rem;
+  height: .38rem;
+  border-radius: 999px;
+  background: var(--signal);
+}
+
+@media (max-width: 900px) {
+  .services-hero__inner,
+  .services-detail__grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* «Xidmətlərimiz» — одно длинное слово: держим его внутри экрана */
+  .services-title {
+    font-size: clamp(2rem, 10vw, 4rem);
+    overflow-wrap: anywhere;
+  }
+
+  .services-detail__card {
+    min-height: auto;
+  }
+}
 .project-grid {
   display: grid;
   gap: clamp(1rem, 2.5vw, 1.75rem);
@@ -647,6 +783,95 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .empty-state { color: var(--steel); padding: 2rem 0; }
 
 /* --- Страница проекта --------------------------------------------------- */
+
+.project-content {
+  display: grid;
+  gap: clamp(2.5rem, 6vw, 5rem);
+}
+
+.project-gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.project-gallery__item {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: var(--paper-alt);
+  aspect-ratio: 16 / 10;
+}
+
+.project-gallery__item picture,
+.project-gallery__item img {
+  width: 100%;
+  height: 100%;
+}
+
+.project-gallery__item img {
+  object-fit: cover;
+}
+
+.project-summary {
+  max-width: 46rem;
+}
+
+.project-summary .lead {
+  margin: 0;
+  color: var(--steel);
+}
+
+.project-rich {
+  color: var(--steel);
+  line-height: 1.8;
+}
+
+.project-rich h2,
+.project-rich h3,
+.project-rich h4 {
+  margin: 0 0 1rem;
+  color: var(--ink);
+  font-weight: 400;
+}
+
+.project-rich h2 {
+  font-size: clamp(1.8rem, 4vw, 2.65rem);
+}
+
+.project-rich h3 {
+  font-size: clamp(1.35rem, 3vw, 1.9rem);
+}
+
+.project-rich p,
+.project-rich ul,
+.project-rich ol,
+.project-rich blockquote {
+  margin: 0 0 1rem;
+}
+
+.project-rich ul,
+.project-rich ol {
+  padding-left: 1.25rem;
+}
+
+.project-rich a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: .18em;
+}
+
+.project-rich blockquote {
+  border-left: 3px solid var(--pink);
+  padding-left: 1rem;
+  color: var(--ink);
+}
+
+@media (min-width: 760px) {
+  .project-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
 .project-hero {
   margin: 0;
   border: 1px solid var(--line);
@@ -675,10 +900,6 @@ button { font: inherit; color: inherit; cursor: pointer; }
   color: var(--steel);
 }
 .spec dd { font-weight: 600; text-align: right; }
-
-.gallery { display: grid; gap: 1rem; grid-template-columns: 1fr; margin-top: 1.25rem; }
-@media (min-width: 640px) { .gallery { grid-template-columns: repeat(2, 1fr); } }
-.gallery__item { margin: 0; border: 1px solid var(--line); overflow: hidden; }
 
 /* --- Преимущества ------------------------------------------------------- */
 .feature-grid {
@@ -1302,7 +1523,7 @@ h1, h2, h3, h4 {
   font-weight: 400;
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 1099px) {
   .nav {
     background: var(--paper-alt);
   }
@@ -1337,7 +1558,7 @@ h1, h2, h3, h4 {
 }
 
 /* --- Reference hero alignment ----------------------------------------- */
-@media (min-width: 1024px) {
+@media (min-width: 1100px) {
   :root {
     --shell: 1750px;
     --gutter: clamp(2rem, 4vw, 4.75rem);
@@ -1473,7 +1694,7 @@ h1, h2, h3, h4 {
   }
 }
 
-@media (min-width: 1024px) and (max-width: 1320px) {
+@media (min-width: 1100px) and (max-width: 1320px) {
   .logo__image {
     width: 15rem;
   }
@@ -1494,4 +1715,165 @@ h1, h2, h3, h4 {
   .hero__title {
     font-size: clamp(3.3rem, 5vw, 4rem);
   }
+}
+
+/* --- About page matched to legacy TCE layout -------------------------- */
+.about-hero {
+  background: var(--paper-alt);
+  padding-block: clamp(3.5rem, 7vw, 6.2rem) clamp(4rem, 8vw, 6.4rem);
+}
+
+.about-hero__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(18rem, .75fr);
+  gap: clamp(2rem, 8vw, 8rem);
+  align-items: start;
+}
+
+.about-kicker {
+  margin: 0 0 1rem;
+  color: var(--steel);
+  font-size: .98rem;
+}
+
+.about-title {
+  max-width: 16ch;
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(3rem, 4.65vw, 4.35rem);
+  font-weight: 300;
+  line-height: 1.02;
+  text-transform: uppercase;
+}
+
+.about-hero__text,
+.about-copy {
+  color: #a4a4ad;
+  font-size: 1.02rem;
+  line-height: 1.8;
+}
+
+.about-story {
+  background: #fff;
+  padding-block: clamp(4rem, 7vw, 6.25rem);
+}
+
+.about-story__grid {
+  display: grid;
+  grid-template-columns: minmax(20rem, .9fr) minmax(0, .8fr);
+  gap: clamp(3rem, 9vw, 9rem);
+  align-items: center;
+}
+
+.about-card {
+  margin: 0;
+  background: #fff;
+  box-shadow: 0 24px 55px rgba(1,22,64,.08);
+}
+
+.about-card img {
+  width: 100%;
+  aspect-ratio: 1.45 / 1;
+  object-fit: cover;
+}
+
+.about-card figcaption {
+  padding: clamp(1.9rem, 4.6vw, 3.7rem) clamp(2rem, 5.5vw, 5.1rem);
+  color: #9aa2b5;
+  font-size: clamp(1.35rem, 2.2vw, 2.05rem);
+  font-weight: 300;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.about-copy p + p {
+  margin-top: 1.25rem;
+}
+
+.about-certificates {
+  position: relative;
+  margin-top: 3.25rem;
+  background: linear-gradient(to bottom, #fff 0, #fff 39.5rem, var(--ink) 39.5rem, var(--ink) 100%);
+  padding-block: 0 clamp(4.4rem, 7vw, 6.3rem);
+}
+
+.about-certificates__title {
+  margin: 0 0 clamp(3.9rem, 6vw, 5.75rem);
+  color: var(--ink);
+  text-align: center;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  font-weight: 300;
+}
+
+.certificate-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(2.5rem, 3.8vw, 3.25rem);
+  align-items: start;
+  max-width: 83.7rem;
+  margin-inline: auto;
+}
+
+.certificate-card {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 7px;
+  background: #fff;
+  box-shadow: 0 18px 40px rgba(0,0,0,.18);
+}
+
+.certificate-card img {
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 900px) {
+  .about-hero__inner,
+  .about-story__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-title {
+    max-width: 100%;
+    font-size: clamp(2.35rem, 11vw, 4.5rem);
+  }
+
+  .certificate-grid {
+    grid-template-columns: 1fr;
+    max-width: 28rem;
+    margin-inline: auto;
+  }
+}
+
+/* --- WhatsApp: плавающая кнопка (номер задаётся в админке) --------------- */
+.wa-float {
+  position: fixed;
+  right: clamp(1rem, 3vw, 1.6rem);
+  bottom: clamp(1rem, 3vw, 1.6rem);
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 50%;
+  background: #25d366;
+  color: #fff;
+  box-shadow: 0 10px 26px rgba(1, 22, 64, .28);
+  transition: transform .2s var(--ease), box-shadow .2s var(--ease);
+}
+
+.wa-float svg {
+  width: 1.9rem;
+  height: 1.9rem;
+}
+
+.wa-float:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 30px rgba(1, 22, 64, .34);
+}
+
+/* --- Видео проекта -------------------------------------------------------- */
+.project-video video {
+  width: 100%;
+  display: block;
 }

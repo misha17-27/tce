@@ -6,11 +6,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title><?= e($page_title) ?></title>
 <meta name="description" content="<?= e($page_description) ?>">
+<meta name="robots" content="<?= e($page_robots ?? 'index,follow') ?>">
+<link rel="canonical" href="<?= e($page_canonical ?? absolute_url($route ?? '')) ?>">
 <meta name="theme-color" content="#011640">
 <meta property="og:title" content="<?= e($page_title) ?>">
 <meta property="og:description" content="<?= e($page_description) ?>">
-<meta property="og:type" content="website">
-<link rel="icon" href="<?= url('assets/img/favicon.svg') ?>" type="image/svg+xml">
+<meta property="og:type" content="<?= e($page_og_type ?? 'website') ?>">
+<meta property="og:url" content="<?= e($page_canonical ?? absolute_url($route ?? '')) ?>">
+<meta property="og:image" content="<?= e($page_og_image ?? absolute_url('assets/img/hero.jpg')) ?>">
+<meta property="og:locale" content="az_AZ">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="<?= e($page_title) ?>">
+<meta name="twitter:description" content="<?= e($page_description) ?>">
+<meta name="twitter:image" content="<?= e($page_og_image ?? absolute_url('assets/img/hero.jpg')) ?>">
+<script type="application/ld+json"><?= json_encode($schema ?? [], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) ?></script>
+<link rel="icon" href="<?= asset('assets/img/favicon.svg') ?>" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap&subset=latin,latin-ext" rel="stylesheet">

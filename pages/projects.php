@@ -1,12 +1,4 @@
-<?php
-declare(strict_types=1);
-
-$categories = [];
-foreach ($site['projects'] as $p) {
-    $categories[$p['category']] = true;
-}
-$categories = array_keys($categories);
-?>
+<?php declare(strict_types=1); ?>
 
 <section class="page-head">
   <div class="shell">
@@ -16,24 +8,14 @@ $categories = array_keys($categories);
       <span aria-current="page">Layihələr</span>
     </nav>
     <h1 class="page-title">Layihələr</h1>
-    <p class="page-lead">
-      Sənaye, infrastruktur və yaşayış obyektləri üzrə tamamlanmış işlərimiz.
-    </p>
+    <p class="page-lead"><?= e(site_text('projects.lead')) ?></p>
   </div>
 </section>
 
 <section class="section">
   <div class="shell">
-
-    <div class="filters" role="group" aria-label="Kateqoriya üzrə süzgəc">
-      <button class="filter is-active" type="button" data-filter="*">Hamısı</button>
-      <?php foreach ($categories as $cat): ?>
-        <button class="filter" type="button" data-filter="<?= e($cat) ?>"><?= e($cat) ?></button>
-      <?php endforeach; ?>
-    </div>
-
-    <div class="project-grid project-grid--all" id="projectGrid">
-      <?php foreach ($site['projects'] as $project): ?>
+<div class="project-grid project-grid--all" id="projectGrid">
+      <?php foreach (public_projects() as $project): ?>
         <article class="project-card" data-category="<?= e($project['category']) ?>">
           <a class="project-card__link" href="<?= url('layihe/' . $project['slug']) ?>">
             <picture class="project-card__media">

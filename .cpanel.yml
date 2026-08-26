@@ -10,6 +10,8 @@ deployment:
     - /bin/cp -Rf config /home/tce/public_html/yeni/
     - /bin/cp -Rf includes /home/tce/public_html/yeni/
     - /bin/cp -Rf pages /home/tce/public_html/yeni/
+    - /bin/cp -Rf admin /home/tce/public_html/yeni/
     - /bin/cp -Rf assets /home/tce/public_html/yeni/
     - /bin/cp -Rf tools /home/tce/public_html/yeni/
+    - /bin/cp -f storage/.htaccess /home/tce/public_html/yeni/storage/.htaccess
     - /bin/chmod 755 /home/tce/public_html/yeni/storage

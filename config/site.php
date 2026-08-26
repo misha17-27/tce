@@ -21,10 +21,11 @@ return [
         'address'    => 'Əhməd Rəcəbli küç., Bakı, Azərbaycan',
         'map_embed'  => 'https://www.google.com/maps?q=Ahmad+Rajabli,+Baku&output=embed',
         'hours'      => 'B.e — Cümə, 09:00 – 18:00',
+        // Номер круглой WhatsApp-кнопки и иконки в подвале. Пусто — скрыто.
+        'whatsapp'   => '+994 77 505 33 99',
+        // Иконки в подвале; url «#» = иконка видна, но не кликается (пока нет ссылки).
         'socials'    => [
-            ['label' => 'Facebook',  'url' => '#'],
             ['label' => 'Instagram', 'url' => '#'],
-            ['label' => 'LinkedIn',  'url' => '#'],
         ],
     ],
 
@@ -59,10 +60,48 @@ return [
     ],
 
     // ── SEO ─────────────────────────────────────────────────────────────────
+    // Title и description каждой страницы можно менять в админке → SEO.
     'seo' => [
-        'description' => '',
+        'description' => 'Turan Construction and Engineering (TCE) — layihələndirmə, tikinti-quraşdırma, avadanlıq təchizatı və satış sonrası xidmətlər. Bakı, Azərbaycan.',
         'robots'      => 'index,follow',
-        'pages'       => [],
+        'pages'       => [
+            'home' => [
+                'title'       => 'TCE — Tikinti və mühəndislik şirkəti | Bakı, Azərbaycan',
+                'description' => 'Turan Construction and Engineering (TCE) — layihələndirmə, tikinti-quraşdırma, avadanlıq təchizatı və satış sonrası xidmətlər. Bakıda etibarlı tikinti tərəfdaşınız.',
+            ],
+            'haqqimizda' => [
+                'title'       => 'Haqqımızda — TCE | Turan Construction and Engineering',
+                'description' => 'TCE şirkəti haqqında: təcrübəli mühəndis komandası, müasir tikinti texnologiyaları və beynəlxalq standartlara uyğun keyfiyyət. Şirkətin dəyərləri və sertifikatları.',
+            ],
+            'xidmetlerimiz' => [
+                'title'       => 'Xidmətlərimiz — tikinti və mühəndislik xidmətləri | TCE',
+                'description' => 'Torpaq işləri, beton və metal konstruksiyalar, fasad işləri, mühəndis kommunikasiyaları, hidrotexniki işlər, yol tikintisi və sənaye obyektləri — TCE-nin tam xidmət spektri.',
+            ],
+            'layiheler' => [
+                'title'       => 'Layihələr — tamamlanmış tikinti layihələri | TCE',
+                'description' => 'TCE-nin tamamladığı layihələr: yaşayış evləri, kommersiya obyektləri və interyer işləri. Hər layihə üzrə foto, texniki göstəricilər və görülən işlərin təsviri.',
+            ],
+            'elaqe' => [
+                'title'       => 'Əlaqə — TCE ilə əlaqə saxlayın | Bakı',
+                'description' => 'TCE ilə əlaqə: +994 77 505 33 99, info@tce.az, Əhməd Rəcəbli küç., Bakı. Formu doldurun — bir iş günü ərzində cavab verib sahəyə ödənişsiz baxış təşkil edirik.',
+            ],
+            'layihe/villa-layihe' => [
+                'title'       => 'Villa layihə — Novxanıda fərdi ev tikintisi | TCE',
+                'description' => 'Novxanıda 480 m²-lik ikimərtəbəli villa: layihələndirmə, monolit karkas, təbii daş fasad, mühəndis sistemləri və daxili dekorasiya — açar təslimi TCE icrası.',
+            ],
+            'layihe/the-glass-house' => [
+                'title'       => 'The Glass House — panoram şüşə fasadlı ev | TCE',
+                'description' => 'Bakıda 620 m²-lik The Glass House layihəsi: enerji-effektiv ikiqat şüşə fasad, daxili karkas konstruksiyası və istilik-ventilyasiya sistemləri TCE tərəfindən.',
+            ],
+            'layihe/the-xs-luxury-apartment' => [
+                'title'       => 'The XS Luxury Apartment — premium mənzil təmiri | TCE',
+                'description' => 'Nəsimi rayonunda 145 m²-lik mənzilin tam yenidən planlaşdırılması və premium təmiri: elektrik, santexnika, daxili dekorasiya və mebel quraşdırılması — TCE.',
+            ],
+            'layihe/the-pool-house' => [
+                'title'       => 'The Pool House — hovuz kompleksinin tikintisi | TCE',
+                'description' => 'Abşeronda 310 m²-lik hovuz kompleksi: hovuz çanağı, su hazırlığı və filtrasiya sistemləri, texniki otaq və ətraf abadlıq — layihədən icraya TCE tərəfindən.',
+            ],
+        ],
     ],
 
     // ── Редактируемые тексты страниц (админка → Страницы) ───────────────────
@@ -280,6 +319,7 @@ return [
             'area'     => '480 m²',
             'client'   => 'Fərdi sifarişçi',
             'cover'    => 'assets/img/projects/villa.jpg',
+            'video'    => 'assets/img/projects/villa/villa-video.mp4',
             'gallery'  => [
                 'assets/img/projects/villa.jpg',
                 'assets/img/projects/villa/villa-gallery-01.jpeg',

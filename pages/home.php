@@ -81,7 +81,7 @@ $heroImage = (string)($site['media']['hero'] ?? 'assets/img/hero.jpg');
     </header>
 
     <ul class="feature-grid">
-      <?php foreach (array_slice($site['advantages'], 0, 5) as $adv): ?>
+      <?php foreach ($site['advantages'] as $adv): ?>
         <li class="feature">
           <h3 class="feature__title"><?= e($adv['title']) ?></h3>
           <p class="feature__text"><?= e($adv['text']) ?></p>

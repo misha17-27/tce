@@ -909,8 +909,18 @@ button { font: inherit; color: inherit; cursor: pointer; }
   border: 1px solid var(--line);
   grid-template-columns: 1fr;
 }
-@media (min-width: 640px) { .feature-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 980px) { .feature-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 640px) {
+  .feature-grid { grid-template-columns: repeat(2, 1fr); }
+  /* нечётное число карточек: последняя занимает весь ряд, дыр не остаётся */
+  .feature:last-child:nth-child(2n - 1) { grid-column: span 2; }
+}
+@media (min-width: 980px) {
+  .feature-grid { grid-template-columns: repeat(3, 1fr); }
+  .feature:last-child:nth-child(2n - 1) { grid-column: auto; }
+  /* хвост неполного ряда из трёх колонок растягиваем на остаток */
+  .feature:last-child:nth-child(3n - 2) { grid-column: span 3; }
+  .feature:last-child:nth-child(3n - 1) { grid-column: span 2; }
+}
 
 .feature {
   background: var(--paper);
@@ -1129,6 +1139,27 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .social { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 1.25rem; font-size: .9rem; }
 .social a { border-bottom: 1px solid rgba(255,255,255,.28); padding-bottom: 2px; }
 .social a:hover { color: var(--signal); border-color: currentColor; }
+
+/* Соцсети иконками (Instagram, WhatsApp и т.д. — из админки) */
+.social--icons { gap: .65rem; }
+.social--icons a,
+.social--icons span {
+  display: grid;
+  place-items: center;
+  width: 2.6rem;
+  height: 2.6rem;
+  border: 1px solid rgba(255, 255, 255, .28);
+  border-radius: 50%;
+  color: #fff;
+  padding-bottom: 0;
+  transition: background .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease);
+}
+.social--icons svg { width: 1.2rem; height: 1.2rem; display: block; }
+.social--icons a:hover {
+  background: var(--signal);
+  border-color: var(--signal);
+  color: var(--ink);
+}
 
 .footer-bottom {
   margin-top: clamp(2rem, 5vw, 3rem);

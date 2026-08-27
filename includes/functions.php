@@ -140,6 +140,13 @@ function absolute_url(string $path = ''): string
     return 'https://' . $host . url($path);
 }
 
+/** Абсолютный URL картинки с версией (?v=) — для og:image и schema.org. */
+function absolute_img_src(string $path): string
+{
+    $host = (string)($_SERVER['HTTP_HOST'] ?? 'tce.az');
+    return 'https://' . $host . img_src($path);
+}
+
 function seo_value(array $site, string $route, string $field, string $fallback = ''): string
 {
     $routeKey = $route === '' ? 'home' : $route;

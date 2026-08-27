@@ -1604,17 +1604,19 @@ h1, h2, h3, h4 {
 
 .partner {
   background: #fff;
-  min-height: 7rem;
+  min-height: 8.5rem;
 }
 
 .partner picture {
   display: grid;
   place-items: center;
+  width: 100%;
 }
 
 .partner img {
-  max-width: 8rem;
-  max-height: 3.25rem;
+  width: min(12rem, 82%);
+  max-height: 4.5rem;
+  object-fit: contain;
   filter: grayscale(1);
   opacity: .72;
 }

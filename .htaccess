@@ -4,6 +4,26 @@ RewriteEngine On
 # Если сайт лежит в подпапке, раскомментируйте и укажите её:
 # RewriteBase /tce-php/
 
+# ── Редиректы со старых адресов (переезд в корень tce.az) ───────────────────
+# Стейджинг /yeni/... → корень
+RewriteRule ^yeni(?:/(.*))?$ /$1 [R=301,L]
+
+# Посты старого WordPress → страницы проектов
+RewriteRule ^2026/06/01/villa-layih - [E=GOTO:/layihe/villa-layihe]
+RewriteRule ^2025/03/03/the-glass-house - [E=GOTO:/layihe/the-glass-house]
+RewriteRule ^2025/03/03/the-xs-luxury-apartment - [E=GOTO:/layihe/the-xs-luxury-apartment]
+RewriteRule ^2025/03/03/the-pool-house - [E=GOTO:/layihe/the-pool-house]
+RewriteCond %{ENV:GOTO} !^$
+RewriteRule ^ %{ENV:GOTO} [R=301,L]
+
+# Остальные датированные записи и архивы WP → список проектов
+RewriteRule ^20[0-9]{2}/[0-9]{2}(/|$) /layiheler [R=301,L]
+RewriteRule ^(category|tag|author|feed|comments)(/|$) / [R=301,L]
+
+# Служебные адреса WordPress больше не существуют
+RewriteRule ^xmlrpc\.php$ - [G,L]
+RewriteRule ^(wp-admin|wp-login\.php|wp-content|wp-includes)(/|$) / [R=301,L]
+
 # Служебные каталоги недоступны из браузера
 RewriteRule ^(storage|config|tools|\.git)(/|$) - [F,L]
 

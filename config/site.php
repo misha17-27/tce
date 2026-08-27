@@ -11,7 +11,7 @@ return [
     'full_name'   => 'Turan Construction and Engineering',
     'tagline'     => 'Keyfiyyətli tikinti və mühəndislik həlləri',
     'lang'        => 'az',
-    'base_url'    => '/yeni', // напр. '/tce-php' если сайт лежит в подпапке. Пусто = корень домена.
+    'base_url'    => '', // напр. '/tce-php' если сайт лежит в подпапке. Пусто = корень домена.
 
     // ── Контакты ────────────────────────────────────────────────────────────
     'contacts' => [

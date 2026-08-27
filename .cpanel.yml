@@ -1,17 +1,16 @@
 ---
 deployment:
   tasks:
-    - /bin/mkdir -p /home/tce/public_html/yeni
-    - /bin/mkdir -p /home/tce/public_html/yeni/storage
-    - /bin/cp -f index.php /home/tce/public_html/yeni/
-    - /bin/cp -f router.php /home/tce/public_html/yeni/
-    - /bin/cp -f .htaccess /home/tce/public_html/yeni/
-    - /bin/cp -f README.md /home/tce/public_html/yeni/
-    - /bin/cp -Rf config /home/tce/public_html/yeni/
-    - /bin/cp -Rf includes /home/tce/public_html/yeni/
-    - /bin/cp -Rf pages /home/tce/public_html/yeni/
-    - /bin/cp -Rf admin /home/tce/public_html/yeni/
-    - /bin/cp -Rf assets /home/tce/public_html/yeni/
-    - /bin/cp -Rf tools /home/tce/public_html/yeni/
-    - /bin/cp -f storage/.htaccess /home/tce/public_html/yeni/storage/.htaccess
-    - /bin/chmod 755 /home/tce/public_html/yeni/storage
+    - /bin/mkdir -p /home/tce/public_html/storage
+    - /bin/cp -f index.php /home/tce/public_html/
+    - /bin/cp -f router.php /home/tce/public_html/
+    - /bin/cp -f .htaccess /home/tce/public_html/
+    - /bin/cp -f README.md /home/tce/public_html/
+    - /bin/cp -Rf config /home/tce/public_html/
+    - /bin/cp -Rf includes /home/tce/public_html/
+    - /bin/cp -Rf pages /home/tce/public_html/
+    - /bin/cp -Rf admin /home/tce/public_html/
+    - /bin/cp -Rf assets /home/tce/public_html/
+    - /bin/cp -Rf tools /home/tce/public_html/
+    - /bin/cp -f storage/.htaccess /home/tce/public_html/storage/.htaccess
+    - /bin/chmod 755 /home/tce/public_html/storage

@@ -215,11 +215,19 @@ function find_project(string $slug): ?array
     return null;
 }
 
-/** Картинка с запасным вариантом, если файла ещё нет. */
+/**
+ * Картинка с запасным вариантом, если файла ещё нет.
+ * URL версионируется временем изменения файла (?v=...) — это сбрасывает
+ * кеш браузера и CDN при замене картинки.
+ */
 function img_src(string $path): string
 {
     $file = __DIR__ . '/../' . ltrim($path, '/');
-    return is_file($file) ? url($path) : url('assets/img/placeholder.svg');
+    if (!is_file($file)) {
+        return url('assets/img/placeholder.svg');
+    }
+
+    return url($path) . '?v=' . filemtime($file);
 }
 
 /** WebP version next to the original image, if it exists. */
@@ -231,7 +239,7 @@ function img_webp_src(string $path): ?string
     }
 
     $file = __DIR__ . '/../' . ltrim($webp, '/');
-    return is_file($file) ? url($webp) : null;
+    return is_file($file) ? url($webp) . '?v=' . filemtime($file) : null;
 }
 
 /** CSRF-токен формы. */

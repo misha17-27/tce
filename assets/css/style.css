@@ -287,6 +287,9 @@ button { font: inherit; color: inherit; cursor: pointer; }
 }
 .nav__phone:hover { color: var(--signal); }
 
+/* Нижний блок мобильного меню (кнопка-телефон, соцсети, слоган) */
+.nav__footer { display: none; }
+
 .burger {
   display: none;
   width: 2.75rem; height: 2.75rem;
@@ -318,23 +321,34 @@ button { font: inherit; color: inherit; cursor: pointer; }
   z-index: 55;
 }
 
-/* Мобильное меню */
+/* Мобильное меню: белая панель на весь экран, пункты по центру,
+   активный — «пилюля»; внизу кнопка-телефон, соцсети и слоган */
 @media (max-width: 1099px) {
   .burger { display: block; }
   .logo__full { display: none; }
 
+  .site-header .logo__image {
+    width: clamp(11rem, 48vw, 14rem);
+    max-height: 3.25rem;
+  }
+
+  /* Логотип и бургер выше панели меню (панель — их сосед по шапке) */
+  .site-header .logo,
+  .burger {
+    position: relative;
+    z-index: 61;
+  }
+
   .nav {
     position: fixed;
-    top: 0; right: 0;
+    top: 0; left: 0; right: 0;
     height: 100dvh;
-    width: min(20rem, 84vw);
     background: var(--paper);
-    border-left: 1px solid var(--line);
     flex-direction: column;
     align-items: stretch;
-    justify-content: flex-start;
+    justify-content: space-between;
     gap: 0;
-    padding: 5.5rem 1.75rem 2rem;
+    padding: 5.25rem 0 0; /* панель лежит под шапкой (z-index ниже) */
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
@@ -348,19 +362,95 @@ button { font: inherit; color: inherit; cursor: pointer; }
     pointer-events: auto;
   }
 
-  .nav__list { flex-direction: column; align-items: stretch; gap: 0; }
-  .nav__item + .nav__item { border-top: 1px solid var(--line); }
-  .nav__link { display: block; padding: 1rem 0; font-size: 1.1rem; }
-  .nav__link::after { display: none; }
-  .nav__link.is-active { color: var(--signal); }
-
-  .nav__cta {
+  .nav__list {
+    flex: 1;
     flex-direction: column;
-    align-items: stretch;
-    gap: .75rem;
-    margin-top: 2rem;
+    align-items: center;
+    justify-content: center;
+    gap: .55rem;
+    padding: 2rem 1.25rem;
   }
-  .nav__phone { font-size: 1.05rem; }
+  .nav__item + .nav__item { border-top: 0; }
+  .nav__link {
+    display: inline-block;
+    padding: .72rem 1.6rem;
+    font-size: 1.08rem;
+    border-radius: 999px;
+    color: var(--ink-soft);
+  }
+  .nav__link::after { display: none; }
+  .nav__link.is-active {
+    background: var(--signal);
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  .nav__cta { display: none; }
+
+  .nav__footer {
+    display: grid;
+    gap: 1.05rem;
+    justify-items: center;
+    padding: 1.4rem 1.25rem calc(1.4rem + env(safe-area-inset-bottom, 0px));
+    border-top: 1px solid var(--line);
+    background: var(--paper-alt);
+  }
+  .nav__phone-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .6rem;
+    width: 100%;
+    max-width: 24rem;
+    padding: 1rem 1.5rem;
+    background: var(--ink);
+    color: #fff;
+    border-radius: 999px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: .01em;
+  }
+  .nav__phone-btn svg { width: 1.15rem; height: 1.15rem; flex: none; }
+  .nav__phone-btn:hover { background: #0a2a5c; }
+
+  .nav__social {
+    display: flex;
+    gap: .7rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .nav__social-link {
+    display: grid;
+    place-items: center;
+    width: 2.7rem;
+    height: 2.7rem;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: #fff;
+    color: var(--ink);
+  }
+  .nav__social-link svg { width: 1.2rem; height: 1.2rem; }
+  .nav__social-link.is-wa {
+    background: #25d366;
+    border-color: #25d366;
+    color: #fff;
+  }
+  .nav__social-link.is-wa svg { width: 1.45rem; height: 1.45rem; }
+
+  .nav__tagline {
+    margin: 0;
+    color: var(--steel);
+    font-size: .92rem;
+    text-align: center;
+  }
+
+  /* Пока меню открыто, круглая WhatsApp-кнопка не нужна — в меню своя */
+  body:has(.nav.is-open) .wa-float {
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 
 @media (min-width: 1100px) {
@@ -686,7 +776,7 @@ button { font: inherit; color: inherit; cursor: pointer; }
 
   /* «Xidmətlərimiz» — одно длинное слово: держим его внутри экрана */
   .services-title {
-    font-size: clamp(2rem, 10vw, 4rem);
+    font-size: clamp(1.7rem, 1.15rem + 4vw, 2.6rem);
     overflow-wrap: anywhere;
   }
 
@@ -1556,7 +1646,7 @@ h1, h2, h3, h4 {
 
 @media (max-width: 1099px) {
   .nav {
-    background: var(--paper-alt);
+    background: var(--paper);
   }
 }
 
@@ -1579,8 +1669,13 @@ h1, h2, h3, h4 {
   }
 
   .hero__title {
-    max-width: 12ch;
-    font-size: clamp(2rem, 12vw, 3rem);
+    max-width: 17ch;
+    font-size: clamp(1.45rem, 1rem + 3.4vw, 2rem);
+    line-height: 1.2;
+  }
+
+  .page-title {
+    font-size: clamp(1.6rem, 1.1rem + 3.6vw, 2.2rem);
   }
 
   .section--brand-band {
@@ -1866,7 +1961,7 @@ h1, h2, h3, h4 {
 
   .about-title {
     max-width: 100%;
-    font-size: clamp(2.35rem, 11vw, 4.5rem);
+    font-size: clamp(1.7rem, 1.15rem + 4vw, 2.6rem);
   }
 
   .certificate-grid {

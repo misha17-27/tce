@@ -1091,6 +1091,22 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .cta .btn--solid { background: var(--ink); border-color: var(--ink); }
 .cta .btn--solid:hover { background: #000; border-color: #000; }
 
+/* На мобильном обе кнопки CTA в одну строку, поровну */
+@media (max-width: 760px) {
+  .cta__actions {
+    flex-wrap: nowrap;
+    width: 100%;
+    gap: .6rem;
+  }
+  .cta__actions .btn {
+    flex: 1 1 0;
+    min-width: 0;
+    padding-inline: .6rem;
+    font-size: .84rem;
+    white-space: nowrap;
+  }
+}
+
 /* --- Контакты ----------------------------------------------------------- */
 .contact-layout {
   display: grid;

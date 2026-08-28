@@ -153,6 +153,23 @@ button { font: inherit; color: inherit; cursor: pointer; }
 }
 .section-head--row .h2 { margin-bottom: 0; }
 
+/* На мобильном кнопка остаётся в одной строке с заголовком */
+@media (max-width: 760px) {
+  .section-head--row {
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 1rem;
+  }
+  .section-head--row > div { min-width: 0; }
+  .section-head--row .h2 { font-size: clamp(1.25rem, .95rem + 1.9vw, 1.6rem); }
+  .section-head--row .btn {
+    flex: none;
+    padding: .6rem 1rem;
+    font-size: .82rem;
+    white-space: nowrap;
+  }
+}
+
 /* --- Кнопки ------------------------------------------------------------- */
 .btn {
   --btn-bg: var(--signal);
